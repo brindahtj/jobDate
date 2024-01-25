@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello OfferController!
+{% endblock %}
+
+{% block body %}
+	{% include "partials/_sidebar.html.twig" %}
+	<div class="col-12 col-sm-12 col-md-9 mb-5">
+		<a href="{{path('app_offer_detail',{'slug':candidate.offer.slug})}}" class="btn button my-2">Retour</a>
+		<div class="container w-50 rounded p-3 shadow bg-light">
+			<h3>{{candidate.user.userProfil.firstName}}</h3>
+			<p class="text-secondary fw-lighter">Message:
+				{{candidate.message}}
+			</p>
+			<div>
+				<small class="text-secondary">Created:
+					{{candidate.createdAt|time_diff}}
+				</small>
+			</div>
+			{{form_start(statusForm)}}
+			{{form_row(statusForm.status)}}
+			<button type="submit" class="btn button my-2">Valider</button>
+			{{form_end(statusForm)}}
+		</div>
+	</div>
+{% endblock %}

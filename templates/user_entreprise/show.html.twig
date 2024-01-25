@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UserEntrepriseController!
+{% endblock %}
+
+{% block body %}
+	{% set entreprise = app.user.userEntreprise %}
+
+	{% include "partials/_sidebar.html.twig" %}
+
+
+	<div class="col-12 col-sm-12 col-md-9 mb-5">
+
+		<h2>
+			{{entreprise.name}}
+
+		</h2>
+		<div class="container w-50 rounded p-3 shadow bg-light">
+			<img src="{{asset('uploads/'~ entreprise.logo)}}" alt="" width='400px'>
+
+
+			<p>
+				Secteur d'activité :
+				{{entreprise.activityArea}}</p>
+			<p>
+				Nom Entreprise:
+				{{entreprise.name}}
+			</p>
+			<p>
+				Adresse:
+				{{entreprise.address}}
+				{{entreprise.zipCode}},
+				{{entreprise.city}}
+				{{entreprise.country}}</p>
+			<p>
+				Télephone:
+				{{entreprise.phoneNumber}}</p>
+			<p>
+				Site internet:
+				{{entreprise.website}}</p>
+
+		</div>
+
+	</div>
+
+{% endblock %}

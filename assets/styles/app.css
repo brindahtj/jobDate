@@ -1,3 +1,64 @@
-body {
-    background-color: skyblue;
+
+ h1,h2{
+
+  font-family: "Roboto", sans-serif;
+    font-weight: 700;
+    font-style: normal
 }
+
+.img-logo{
+  width: 110px;
+  height: 70px;
+  margin-right: 30px;
+}
+
+
+button, .button {
+  padding: 10px 25px;
+  border: unset;
+  border-radius: 8px;
+  color: #212121;
+  z-index: 1;
+  background: #e8e8e8;
+  position: relative;
+  font-size: 17px;
+  -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  transition: all 250ms;
+  overflow: hidden;
+ }
+ 
+button::before, .button::before  {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 0;
+  border-radius: 8px;
+  background-color: #212121;
+  z-index: -1;
+  -webkit-box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  box-shadow: 4px 8px 19px -3px rgba(0,0,0,0.27);
+  transition: all 250ms
+ }
+ 
+ button:hover , .button:hover {
+  color: #e8e8e8;
+ }
+ 
+ button:hover::before , .button:hover::before {
+  width: 100%;
+ }
+ i{
+  transition: all 250ms
+
+ }
+ i:hover{
+  color: #e8e8e8;
+ }
+
+ .home-img{
+  height: 400px;
+  object-fit: cover;
+ }

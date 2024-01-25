@@ -1,0 +1,27 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello TagController!
+{% endblock %}
+
+{% block body %}
+	{% include "partials/_sidebar.html.twig" %}
+
+	<div class="col-12 col-sm-12 col-md-9 mb-5">
+		<div class="container w-50 rounded p-3 shadow bg-light">
+
+			<h3>Ajouter des mot-clés
+			</h3>
+
+			{{ form_start(tagForm) }}
+			{{form_row(tagForm.name)}}
+			<button type="submit" class="button my-2">Créer</button>
+			{{ form_end(tagForm) }}
+		</div>
+
+		<h3>Liste des mot-clés
+		</h3>
+		{% for tag in data %}
+			<div class="badge rounded-pill text-bg-info my-3">{{tag.name}}</div>
+		{% endfor %}
+	</div>
+{% endblock %}

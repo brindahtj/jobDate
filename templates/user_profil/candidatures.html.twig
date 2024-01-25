@@ -1,0 +1,56 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UserProfilController!
+{% endblock %}
+
+{% block body %}
+
+{# {% include "partials/_sidebar.html.twig" %} #}
+
+<div class="col-12 col-sm-12 col-md-9 mb-5">
+
+	<h5>Les candidatures</h5>
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th scope="col">Titre</th>
+				<th scope="col">Statut</th>
+				<th scope="col">Description</th>
+				<th scope="col">Date</th>
+				<th scope="col">Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for application in applications %}
+				<tr>
+					<td>{{application.offer.title}}</td>
+					<td>
+						{% if application.status =="STATUS_ACCEPTED" %}
+							<badge class="badge bg-success">
+								Accepté
+							</badge>
+						{% endif %}
+						{% if application.status =="STATUS_REFUSED" %}
+							<badge class="badge bg-danger">
+								Refusé
+							</badge>
+						{% endif %}
+						{% if application.status =="STATUS_PENDING" %}
+							<badge class="badge bg-warning">
+								En cours
+							</badge>
+
+						{% endif %}
+					</td>
+					<td>{{application.message|slice(0, 100)}}</td>
+					<td>{{application.createdAt|date("m/d/Y")}}</td>
+					<td>
+						{# <a type="button" href="{{path('app_offer_candidate',{'slug':application.offer.slug,'id':candidate.id})}}" class="btn btn-primary">
+																			<i class="fa-solid fa-eye"></i>
+																		</a> #}
+					</td>
+				</tr>
+			</td>
+		</tbody>
+	</tr>
+</tbody></tbody></tr>{% endfor %}</tbody></table></div>{% endblock %}

@@ -1,0 +1,26 @@
+{% set routeName = 'app_offre_emploi' %}
+{% set pages = offers.pages %}
+{% set page = offers.page %}
+{% if pages <2 %}
+	{% else %}
+
+
+		<nav aria-label="Page navigation example">
+			<ul class="pagination justify-content-center">
+				<li class="page-item {% if page==1 %} disabled {% endif %}">
+					<a class="page-link" href="{{path(routeName, {'page':page -1})}}">Previous</a>
+				</li>
+				{% for i in (page - 2) .. (page + 2) %}
+					{% if i > 0 and i <= pages %}
+						<li class="page-item {% if i == page %}active{% endif %}">
+							<a class="page-link" href="{{ path(routeName, {'page': i}) }}">{{ i }}</a>
+						</li>
+					{% endif %}
+				{% endfor %}
+
+				<li class="page-item {% if page== pages %} disabled {% endif %}">
+					<a class="page-link" href="{{path(routeName, {'page':page +1})}}">Next</a>
+				</li>
+			</ul>
+		</nav>
+{% endif %}

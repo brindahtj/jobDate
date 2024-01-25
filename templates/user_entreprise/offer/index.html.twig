@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello OfferController!
+{% endblock %}
+
+{% block body %}
+	<h2>Les offres</h2>
+	<a href="{{path('app_offer_create')}}" class="btn button my-2">Créer une offre</a>
+
+	<table class="table table-striped">
+		<thead>
+			<tr>
+				<th scope="col">Titre de l'offre</th>
+				<th scope="col">Contrat</th>
+				<th scope="col">Salaire</th>
+				<th scope="col">Localisation</th>
+				<th scope="col">Publiée le</th>
+				<th scope="col">Nombre candidatures</th>
+				<th scope="col">Actions</th>
+			</tr>
+		</thead>
+		<tbody>
+
+			{% for offer in data %}
+				<tr>
+
+
+					<td>{{offer.title}}</td>
+					<td>{{offer.contractType.name}}</td>
+					<td>{{offer.salary}}</td>
+					<td>{{offer.location}}</td>
+					<td>{{offer.createdAt|date("m/d/Y")}}</td>
+					<td>{{offer.applications|length}}</td>
+					<td>
+						<a type="button" href="{{path('app_offer_detail', {'slug':offer.slug})}}" class="btn btn-primary">
+							<i class="fa-solid fa-eye"></i>
+						</a>
+						<a type="button" href="{{path('app_offer_edit', {'slug':offer.slug})}}" class="btn btn-warning">
+							<i class="fa-solid fa-pen-to-square"></i>
+						</a>
+						<a type="button" href="{{path('app_offer_delete', {'slug':offer.slug})}}" class="btn btn-danger">
+							<i class="fa-solid fa-trash-can"></i>
+						</a>
+					</td>
+
+				</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+{% endblock %}

@@ -1,0 +1,45 @@
+<div class="col mb-4">
+	<div class="card h-100">
+		<div class="card-body">
+			<div class="d-flex justify-content-between mb-2">
+				<img src="{{offer.entreprise.logo}}" class="card-img-top" alt="Logo de l'entreprise" style="height: 50px; width: 50px; object-fit: cover;border-radius: 50%;"/>
+				<p class="card-subtitle text-end ms-2">
+					<i class="bi bi-geo-alt-fill"></i>
+					{{offer.location}}
+				</p>
+			</div>
+			<h5 class="card-title">{{offer.title}}</h5>
+			<div class="d-flex justify-content-between">
+				<p class="card-text">{{offer.entreprise.name}}</p>
+				<p class="card-text">{{offer.contractType.name}}</p>
+				<p class="card-text">{{offer.salary}}
+					€/an</p>
+			</div>
+			<p class="card-text">{{offer.shortDescription}}</p>
+			<div class="mb-1">
+				<p class="card-text">Compétences</p>
+				<ul class="list-inline">
+					{% for tag in offer.tags %}
+						<li class="list-inline-item">
+							<span class="badge bg-primary">{{tag.name}}</span>
+						</li>
+					{% endfor %}
+
+				</ul>
+			</div>
+			<p class="card-text">
+				<small class="text-muted">
+					<i class="bi bi-clock"></i>
+					Publié
+					{{offer.createdAt|time_diff(locale='fr')}}
+				</small>
+			</p>
+		</div>
+		<div class="card-footer text-center">
+			<a href="{{path('app_offre_emploi_detail', {'id':offer.id})}}" class="btn button">
+				<i class="bi bi-eye"></i>
+				Postuler
+			</a>
+		</div>
+	</div>
+</div>

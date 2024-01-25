@@ -1,0 +1,3 @@
+{% for flashSuccess in app.session.flashbag.get('success') %}
+	<div class="alert alert-success" role="alert">{{flashSuccess}}</div>
+{% endfor %}

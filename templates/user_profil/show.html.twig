@@ -1,0 +1,47 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UserProfilController!
+{% endblock %}
+
+{% block body %}
+	{% set user = app.user.userProfil %}
+
+	{% include "partials/_sidebar.html.twig" %}
+
+
+	<div class="col-12 col-sm-12 col-md-9 mb-5">
+
+		<h2>Bonjour
+			{{user.firstName}}
+			!
+		</h2>
+		<div class="container w-50 rounded p-3 shadow bg-light">
+			<div class="text-center">
+				<img src="{{user.picture}}" alt="" width='200px'></div>
+
+
+			<p>
+				Poste recherché:
+				{{user.jobSought}}</p>
+			<p>
+				Nom Prenom:
+				{{user.lastName}}
+				{{user.firstName}}</p>
+			<p>
+				Adresse:
+				{{user.address}}
+				{{user.zipCode}},
+				{{user.city}}
+				{{user.country}}</p>
+			<p>
+				Télephone:
+				{{user.phoneNumber}}</p>
+			<p>
+				Site internet:
+				{{user.website}}</p>
+
+		</div>
+
+	</div>
+
+{% endblock %}

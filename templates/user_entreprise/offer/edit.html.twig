@@ -1,0 +1,29 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello OfferController!
+{% endblock %}
+
+{% block body %}
+	{% include "partials/_sidebar.html.twig" %}
+
+	<div class="col-12 col-sm-12 col-md-9 mb-5">
+		<div class="container w-50 rounded p-3 shadow bg-light">
+
+			<h3>Modifier l'offre
+			</h3>
+
+			{{ form_start(offerForm) }}
+			{{form_row(offerForm.title)}}
+			{{form_row(offerForm.shortDescription)}}
+			{{form_row(offerForm.content)}}
+			{{form_row(offerForm.salary)}}
+			{{form_row(offerForm.location)}}
+			{{form_row(offerForm.contractType)}}
+			{{form_row(offerForm.tags)}}
+			<button type="submit" class="button my-2">Modifier</button>
+			{{ form_end(offerForm) }}
+		</div>
+
+
+	</div>
+{% endblock %}

@@ -1,0 +1,61 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{parent()}}-Accueil
+{% endblock %}
+
+{% block body %}
+
+
+	<div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+		<div class="carousel-inner">
+
+			{% for setting in settings %}
+				<div class="carousel-item {% if loop.first %}active{% endif %}">
+					<img src="{{setting.image}}" class="d-block w-100 home-img" alt="...">
+					<div class="position-absolute container top-50 z-1 d-flex flex-column justify-content-center">
+						<h5 class="text-center text-white">{{setting.message|raw}}</h5>
+						<div class="text-center">
+							<button class=" ">
+								{{setting.callToAction}}
+							</button>
+						</div>
+					</div>
+				</div>
+			{% endfor %}
+		</div>
+	</div>
+
+	<section class="container py-5">
+		<h2 class="text-center mb-4">Offres d'emploi récentes</h2>
+
+		<div
+			class="row row-cols-1 row-cols-md-2 row-cols-lg-3 g-4">
+			<!-- Carte offre d'emploi -->
+			{% for offer in offers %}
+				{% include "partials/_offreCard.html.twig" %}
+			{% endfor %}
+
+			<!-- Fin carte offre d'emploi -->
+		</div>
+		<div class="text-center">
+			<button class="me-3">
+				<a class="nav-link " href="{{path('app_offre_emploi')}}">Voir plus d'offres</a>
+			</button>
+		</div>
+	</section>
+
+
+	<section class="container py-5">
+		<h2 class="text-center mb-4">Entreprises récentes</h2>
+		<div
+			class="row g-4">
+			<!-- Carte d'entreprise 1 -->
+			{% for entreprise in entreprises %}
+				{% include "partials/_entrepriseCard.html.twig" %}
+			{% endfor %}
+		</div>
+	</section>
+
+
+{% endblock %}

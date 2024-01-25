@@ -1,0 +1,67 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{parent()}}-Offres
+{% endblock %}
+
+{% block body %}
+
+
+	<section class="container py-5">
+		<h2 class="text-center mb-4">Offres d'emploi</h2>
+		<div class="row">
+			<div class="col-3">
+				<form>
+					<div class="mb-3">
+						<input type="text" class="form-control" id="search" name="search" placeholder="Rechercher une offre d'emploi">
+					</div>
+					<div class="mb-3">
+						<select class="form-select" name="category">
+							<option value="recent">Plus récent</option>
+							<option value="old">Plus ancien</option>
+						</select>
+					</div>
+					<div class="mb-3">
+						<div class="accordion" id="accordionExample">
+							<div class="accordion-item">
+								<h2 class="accordion-header" id="headingOne">
+									<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+										Mots clés
+									</button>
+								</h2>
+								<div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+									<div class="accordion-body">
+										{% for tag in tags %}
+											<div class="form-check me-3 m-b-2 d-inline-block">
+
+												<input class="form-check-input" type="checkbox" name="tags[]" value="{{ tag.id }}" id="tag-{{ tag.id }}">
+
+												<label class="form-check-label" for="tag-{{ tag.id }}">{{ tag.name }}</label>
+
+											</div>
+										{% endfor %}
+									</div>
+								</div>
+							</div>
+						</div>
+
+					</div>
+					<input type="submit" class="btn btn-primary" value="Rechercher">
+				</form>
+			</div>
+			<div class="col-9">
+				<div
+					class="row row-cols-1 row-cols-md-2 row-cols-lg-2 g-4">
+
+					<!-- Carte offre d'emploi -->
+					{% for offer in offers.data %}
+						{% include "partials/_offreCard.html.twig" %}
+					{% endfor %}
+					<!-- Fin carte offre d'emploi -->
+				</div>
+			</div>
+			{% include "partials/_pagination.html.twig" %}
+		</section>
+
+
+	{% endblock %}

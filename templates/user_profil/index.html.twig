@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UserProfilController!
+{% endblock %}
+
+{% block body %}
+
+	{% include "partials/_sidebar.html.twig" %}
+
+	<div class="col-12 col-sm-12 col-md-9 mb-5">
+
+		<h2>Formulaire profil</h2>
+		{{ form_start(userProfilForm) }}
+		{{form_errors(userProfilForm)}}
+		<div class="row g-3">
+			<div class="col">
+				{{form_row(userProfilForm.firstName)}}
+			</div>
+			<div class="col">{{form_row(userProfilForm.lastName)}}</div>
+		</div>
+		<div class="row g-3">
+			<div class="col">{{form_row(userProfilForm.address)}}</div>
+			<div class="col">{{form_row(userProfilForm.phoneNumber)}}</div>
+		</div>
+		<div class="row g-3">
+			<div class="col">{{form_row(userProfilForm.city)}}</div>
+			<div class="col">{{form_row(userProfilForm.zipCode)}}</div>
+			<div class="col">{{form_row(userProfilForm.country)}}</div>
+		</div>
+		<div class="row g-3">
+			<div class="col">{{form_row(userProfilForm.jobSought)}}</div>
+			<div class="col">{{form_row(userProfilForm.website)}}</div>
+		</div>
+		{{form_row(userProfilForm.availability)}}
+		{{form_row(userProfilForm.presentation)}}
+		{{form_row(userProfilForm.imageFile)}}
+		<button type="submit" class="button my-2">Créer</button>
+		{{ form_end(userProfilForm) }}
+
+	</div>
+
+{% endblock %}

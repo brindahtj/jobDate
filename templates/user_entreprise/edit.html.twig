@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello UserEntrepriseController!
+{% endblock %}
+
+{% block body %}
+
+	{% include "partials/_sidebar.html.twig" %}
+
+	<div class="col-12 col-sm-12 col-md-9 mb-5">
+
+		<h2>Formulaire Entreprise</h2>
+		{{ form_start(userEntrepriseForm) }}
+		{{form_errors(userEntrepriseForm)}}
+		<div class="row g-3">
+			<div class="col">
+				{{form_row(userEntrepriseForm.name)}}
+			</div>
+		</div>
+		<div class="row g-3">
+			<div class="col">{{form_row(userEntrepriseForm.address)}}</div>
+			<div class="col">{{form_row(userEntrepriseForm.phoneNumber)}}</div>
+		</div>
+		<div class="row g-3">
+			<div class="col">{{form_row(userEntrepriseForm.city)}}</div>
+			<div class="col">{{form_row(userEntrepriseForm.zipCode)}}</div>
+			<div class="col">{{form_row(userEntrepriseForm.country)}}</div>
+		</div>
+		<div class="row g-3">
+			<div class="col">{{form_row(userEntrepriseForm.activityArea)}}</div>
+			<div class="col">{{form_row(userEntrepriseForm.website)}}</div>
+		</div>
+		{{form_row(userEntrepriseForm.description)}}
+		{{form_row(userEntrepriseForm.logoEntreprise)}}
+		<button type="submit" class="button my-2">Créer</button>
+		{{ form_end(userEntrepriseForm) }}
+
+	</div>
+
+{% endblock %}

@@ -1,0 +1,98 @@
+<h1>Mon compte</h1>
+<a class="btn btn-danger mx-3" role="button" href="{{path('app_logout')}}">
+	<i class="fa-solid fa-arrow-right-from-bracket" style="color: #ffffff;"></i>
+	Se deconnecter
+</a>
+<div class="container-fluid mb-5">
+	<div class="row">
+		<div class="col-12 col-sm-12 col-md-3 mt-5 card shadow ">
+			<ul class="list-group list-group-flush">
+				<li class="list-group-item d-flex justify-content-center align-items-start">
+					<div class=" ms-3">
+						{% set profil = app.user.userProfil %}
+						{% set entreprise = app.user.userEntreprise %}
+
+						{% if profil is not null  %}
+
+							<img class="rounded-circle w-50" src="{{user.picture}}" alt="">
+							<div class="fw-bold">{{profil.firstName}}
+								{{profil.lastName}}</div>
+
+							<div class="smalltext">
+
+								<a href="{{path('app_user_profil_edit',{'slug':profil.slug})}}">
+									Modifier les informations</a>
+
+
+							</div>
+							<a class=" py-3  text-danger" href="{{path('app_user_profil_delete',{'slug':profil.slug})}}">
+								Supprimer mon compte</a>
+
+						{% elseif entreprise is not null %}
+
+
+							<img class="rounded-circle w-50" src="{{entreprise.logo}}" alt="">
+							<div class="fw-bold text-uppercase">{{entreprise.name}}
+							</div>
+
+							<div class="smalltext">
+
+								<a href="{{path('app_user_entreprise_edit',{'slug':entreprise.slug})}}">
+									Modifier les informations</a>
+
+
+							</div>
+							<a class=" py-3  text-danger" href="{{path('app_user_entreprise_delete',{'slug':entreprise.slug})}}">
+								Supprimer mon compte</a>
+
+
+						{% endif %}
+					</div>
+
+				</li>
+				{% if app.user.roles[0]=='ROLE_USER' %}
+
+					<li href="#" class="list-group-item list-group-item-light py-2">
+						<i class="fa-solid fa-gear fa-xl me-2 " style="color: #1a1a19;"></i>Paramétrage du compte</li>
+					{% if profil is null %}
+
+						<a class="list-group-item list-group-item-action py-3" href="{{path('app_user_profil')}}">
+							Profil</a>
+					{% else %}
+
+
+						<a class="list-group-item list-group-item-action py-3" href="{{path('app_user_profil_show',{'slug':profil.slug})}}">Mes informations</a>
+
+
+						<li href="#" class="list-group-item list-group-item-light py-2">
+							<i class="fa-regular fa-clipboard fa-xl me-2 " style="color: #1a1a19;"></i>Tableau de bord</li>
+
+						<a class="list-group-item list-group-item-action py-3" href="#">Mes candidatures</a>
+					{% endif %}
+
+
+				{% elseif app.user.roles[0]=='ROLE_PRO' %}
+
+					<li href="#" class="list-group-item list-group-item-light py-2">
+						<i class="fa-solid fa-gear fa-xl me-2 " style="color: #1a1a19;"></i>Paramétrage du compte</li>
+					{% if entreprise is  null   %}
+
+
+						<a class="list-group-item list-group-item-action py-3" href="{{path('app_user_entreprise')}}">
+							Profil</a>
+					{% else %}
+
+						<a class="list-group-item list-group-item-action py-3" href=" {{path('app_offer')}} ">Mes offres d'emploi</a>
+						<a class="list-group-item list-group-item-action py-3" href="{{path('app_user_entreprise_show',{'slug':entreprise.slug})}}">Mes informations</a>
+
+
+						<li href="#" class="list-group-item list-group-item-light py-2">
+							<i class="fa-regular fa-clipboard fa-xl me-2 " style="color: #1a1a19;"></i>Tableau de bord</li>
+
+						<a class="list-group-item list-group-item-action py-3" href="{{path('app_tag')}}">Les mot-clés</a>
+					{% endif %}
+				{% endif %}
+
+			</li>
+		</ul>
+	</div>

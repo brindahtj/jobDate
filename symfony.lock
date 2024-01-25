@@ -13,6 +13,18 @@
             "./src/Repository/.gitignore"
         ]
     },
+    "doctrine/doctrine-fixtures-bundle": {
+        "version": "3.5",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "3.0",
+            "ref": "1f5514cfa15b947298df4d771e694e578d4c204d"
+        },
+        "files": [
+            "./src/DataFixtures/AppFixtures.php"
+        ]
+    },
     "doctrine/doctrine-migrations-bundle": {
         "version": "3.3",
         "recipe": {
@@ -26,6 +38,24 @@
             "./migrations/.gitignore"
         ]
     },
+    "easycorp/easyadmin-bundle": {
+        "version": "4.8",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "3.0",
+            "ref": "b131e6cbfe1b898a508987851963fff485986285"
+        }
+    },
+    "knplabs/knp-time-bundle": {
+        "version": "v2.2.0"
+    },
+    "php-flasher/flasher-notyf-symfony": {
+        "version": "v1.15.9"
+    },
+    "php-flasher/flasher-symfony": {
+        "version": "v1.15.9"
+    },
     "phpunit/phpunit": {
         "version": "9.6",
         "recipe": {
@@ -38,6 +68,18 @@
             "./.env.test",
             "./phpunit.xml.dist",
             "./tests/bootstrap.php"
+        ]
+    },
+    "symfony/apache-pack": {
+        "version": "1.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "1.0",
+            "ref": "0f18b4decdf5695d692c1d0dfd65516a07a6adf1"
+        },
+        "files": [
+            "./public/.htaccess"
         ]
     },
     "symfony/asset-mapper": {
@@ -248,6 +290,18 @@
             "./templates/base.html.twig"
         ]
     },
+    "symfony/uid": {
+        "version": "7.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "6.2",
+            "ref": "d294ad4add3e15d7eb1bae0221588ca89b38e558"
+        },
+        "files": [
+            "./config/packages/uid.yaml"
+        ]
+    },
     "symfony/ux-turbo": {
         "version": "v2.13.2"
     },
@@ -275,6 +329,9 @@
             "./config/packages/web_profiler.yaml",
             "./config/routes/web_profiler.yaml"
         ]
+    },
+    "symfonycasts/verify-email-bundle": {
+        "version": "v1.16.1"
     },
     "twig/extra-bundle": {
         "version": "v3.8.0"

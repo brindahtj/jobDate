@@ -1,0 +1,74 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{parent()}}-Accueil
+{% endblock %}
+
+{% block body %}
+
+
+	<section class="container py-5  mt-5 row">
+		<div class="col-9 border rounded p-5">
+			<h2 class="text-center mb-4">{{offre.title}}</h2>
+
+			<p class="card-text text-secondary">{{offre.entreprise.name}}</p>
+			<p class="card-text">{{offre.contractType.name}}</p>
+			<p class="card-text">Salaire:
+				{{offre.salary}}
+				€/an brut</p>
+			<p class="card-text">{{offre.shortDescription}}</p>
+			<p class="card-text">{{offre.content}}</p>
+			<div class="mb-3">
+				<p class="card-text ">Compétences</p>
+				<ul class="list-inline">
+					{% for tag in offre.tags %}
+						<li class="list-inline-item">
+							<span class="badge bg-primary">{{tag.name}}</span>
+						</li>
+					{% endfor %}
+
+				</ul>
+			</div>
+			<small class="text-muted">
+				<i class="bi bi-clock"></i>
+				Publié
+				{{offre.createdAt|time_diff(locale='fr')}}
+			</small>
+		</div>
+
+		<div class="col-3 ps-5">
+			{% if app.user is null %}.
+				<h5 class="mt-5">Postulez directement</h5>
+				<a href="{{path('app_login')}}" class="btn button mt-5">
+					<i class="bi bi-eye"></i>
+					Connectez-vous pour postuler
+				</a>
+			{% endif %}
+			{% if app.user %}
+
+
+				{% if app.user.userProfil is not null %}
+					<h5 class="mt-5">Postulez directement</h5>
+
+					<div class="">
+						{{form_start(form)}}
+						{{form_row(form.message)}}
+						{% if existingsApplication is null %}
+
+							<button type="submit" class="btn button mt-5">
+								Envoyer
+							</button>
+						{% else %}
+							<button type="submit" class="btn button mt-5 disabled">
+								Vous avez déjà candidaté
+							</button>
+						{% endif %}
+						{{ form_end(form) }}
+					</div>
+
+
+				</div>
+			{% endif %}
+		{% endif %}
+	</div>
+</section>{% endblock %}

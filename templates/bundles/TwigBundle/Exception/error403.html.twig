@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+	{{ parent() }}
+	- Erreur 403
+{% endblock %}
+
+{% block body %}
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 mx-auto mt-5 shadow-lg p-5">
+				<h1 class="text-center text-warning">
+					Erreur 403
+				</h1>
+
+				<p class="lead text-center">
+					La page que vous cherchez n'existe pas ou a été déplacée.Merci de vérifier l'URL saisie ou de cliquer sur le bouton ci-dessous pour retourner à la page d'accueil.
+				</p>
+				<a href="{{ path('app_home') }}" class="btn btn-block btn-info">Retour à l'accueil</a>
+			</div>
+		</div>
+	</div>
+{% endblock %}
